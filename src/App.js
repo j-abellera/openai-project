@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='App'>
       <Form input={input} setInput={setInput} setResponse={setResponse} setAsked={setAsked} />
-      <h4 className='asked'>{asked ? `You asked: ${asked}` : null}</h4>
+      <p className='asked'>{asked ? `You asked: ${asked}` : null}</p>
       <h4 className='response'>{response ? response : null}</h4>
     </div>
   );

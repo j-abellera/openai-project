@@ -19,11 +19,11 @@
     display: flex;
     flex-flow: row wrap;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     /* border: solid 2px red; */
     justify-content: center;
     margin: 0;
-    background-color: #495e57;
+    /* background-color: #495e57; */
   }
   .response {
     width: 95%;
