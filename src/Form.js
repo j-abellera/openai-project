@@ -2,7 +2,7 @@ import React from 'react';
 import { aiRequest } from './api';
 
 const Form = (props) => {
-    const { input, setInput, setResponse, setAsked } = props;
+    const { input, setInput, setResponse, setAsked, chatLog, setChatLog } = props;
     const handleChange = (e) => {
         const typed = e.target.value;
         setInput(typed);
@@ -12,7 +12,8 @@ const Form = (props) => {
         const response = await aiRequest(input);
         setResponse(response);
         setAsked(input);
-        setInput('')
+        setChatLog(...chatLog, input);
+        setInput('');
     }
 
     return (

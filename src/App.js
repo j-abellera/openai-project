@@ -7,10 +7,11 @@ function App() {
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('')
   const [asked, setAsked] = useState('')
+  const [chatLog, setChatLog] = useState([])
 
   return (
     <div className='App'>
-      <Form input={input} setInput={setInput} setResponse={setResponse} setAsked={setAsked} />
+      <Form input={input} setInput={setInput} setResponse={setResponse} setAsked={setAsked} chatLog={chatLog} setChatLog={setChatLog} />
       <p className='asked'>{asked ? `You asked: ${asked}` : null}</p>
       <h4 className='response'>{response ? response : null}</h4>
     </div>
