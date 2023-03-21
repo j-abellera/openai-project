@@ -18,8 +18,8 @@ const Form = (props) => {
 
     return (
         <>
-            <h1>OpenAI Project</h1>
-            <h2>Ask Anything Using GPT3</h2>
+            {/* <h1>OpenAI Project</h1> */}
+            <h2>Ask Anything Using GPT3.5</h2>
             <form onSubmit={handleSubmit}>
                 {/* <label htmlFor='input'>Ask Anything Here</label><br/> */}
                 <textarea
