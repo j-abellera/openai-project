@@ -7,7 +7,10 @@ function App() {
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('')
   const [asked, setAsked] = useState('')
-  const [chatLog, setChatLog] = useState([])
+  const [chatLog, setChatLog] = useState([
+    // {"role": "system", content: "You are a helpful assistant"},
+    // {"role": "assistant", content: "Thank you! How may I assist you today?"}
+  ]);
 
   return (
     <div className='App'>

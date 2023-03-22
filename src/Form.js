@@ -1,5 +1,6 @@
 import React from 'react';
-import { aiRequest } from './api';
+import axios from 'axios';
+// import { aiRequest } from './api';
 
 const Form = (props) => {
     const { input, setInput, setResponse, setAsked, chatLog, setChatLog } = props;
@@ -9,11 +10,36 @@ const Form = (props) => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await aiRequest(input);
+        const updatedChatLog = [...chatLog, {"role": "user", "content": input}];
+        setChatLog(updatedChatLog);
+        const response = await aiRequest(updatedChatLog);
         setResponse(response);
         setAsked(input);
-        setChatLog(...chatLog, input);
         setInput('');
+    }
+
+    const aiRequest = async (chatLog) => {
+        try {
+            console.log(chatLog)
+            const response = await axios({
+                url: 'https://api.openai.com/v1/chat/completions',
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    model: 'gpt-3.5-turbo',
+                    messages: chatLog,
+                    temperature: 0,
+                    max_tokens: 1000
+                }
+            });
+            setChatLog( prevChatLog => [...prevChatLog, {"role": "assistant", "content": response.data.choices[0].message.content}]);
+            return response.data.choices[0].message.content;
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
