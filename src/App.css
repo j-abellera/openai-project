@@ -14,6 +14,32 @@
   margin: 25px auto;
 }
 
+.ai-Image {
+  margin-top: 5%;
+  object-fit: contain;
+  width: 95vw;
+}
+
+.nav-link-container {
+  /* border: solid 1px black; */
+  display: block;
+  width: 300px;
+  margin: 2% auto;
+  text-align: center;
+  text-decoration: none;
+}
+
+.nav-link {
+  padding: 25px;
+  text-decoration: none;
+  color: #d8d8d856;
+  font-weight: bold;
+}
+
+.active {
+  color: #d8c564;
+}
+
 @media screen and (max-width: 400px) {
   .App {
     display: flex;

@@ -1,41 +1,39 @@
 import React from 'react';
 import axios from 'axios';
 
-const Form = (props) => {
-    const { input, setInput, setResponse, setAsked, chatLog, setChatLog } = props;
+const ImageForm = (props) => {
+    const { input, setInput, request, setRequest, imgResponse, setImgResponse } = props;
+
     const handleChange = (e) => {
         const typed = e.target.value;
         setInput(typed);
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const updatedChatLog = [...chatLog, {"role": "user", "content": input}];
-        setChatLog(updatedChatLog);
-        const response = await aiRequest(updatedChatLog);
-        setResponse(response);
-        setAsked(input);
+        const response = await imgRequest(input);
+        setImgResponse(response);
+        setRequest(input);
         setInput('');
     }
 
-    const aiRequest = async (chatLog) => {
+    const imgRequest = async () => {
         try {
-            console.log(chatLog)
             const response = await axios({
-                url: 'https://api.openai.com/v1/chat/completions',
+                url: 'https://api.openai.com/v1/images/generations',
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
                     'Content-Type': 'application/json'
                 },
                 data: {
-                    model: 'gpt-3.5-turbo',
-                    messages: chatLog,
-                    temperature: 0,
-                    max_tokens: 1000
+                    prompt: input,
+                    n: 1,
+                    size: '1024x1024'
                 }
             });
-            setChatLog( prevChatLog => [...prevChatLog, {"role": "assistant", "content": response.data.choices[0].message.content}]);
-            return response.data.choices[0].message.content;
+            console.log(response.data.data[0].url)
+            return response.data.data[0].url//returns image
         } catch (error) {
             console.error(error);
         }
@@ -43,10 +41,8 @@ const Form = (props) => {
 
     return (
         <>
-            {/* <h1>OpenAI Project</h1> */}
-            <h2>Ask Anything Using GPT3.5</h2>
+            <h2>Generate an Image using DALL·E</h2>
             <form onSubmit={handleSubmit}>
-                {/* <label htmlFor='input'>Ask Anything Here</label><br/> */}
                 <textarea
                     rows='10'
                     cols='100'
@@ -61,4 +57,4 @@ const Form = (props) => {
     )
 }
 
-export default Form;
+export default ImageForm;
