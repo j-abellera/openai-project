@@ -7,7 +7,7 @@
 <h2>Chat Generator</h2>
 <img style='height: 500px;' alt='gpt-example' src='https://github.com/j-abellera/openai-project/blob/master/OpenAI-Project_GPT-Example.png' />
 <p>Chat bot has been updated to use the GPT-3.5-Turbo model.</p>
-<p>useState used to hold chat log data that is sent on every request so that a conversation can be held with the AI. Very good for asking follow up questions. Requests are sent via axios with Authorizations held in a separate .env file.</p>
+<p>chat log data saved via state and is sent on every request so that a conversation can be held with the AI. Very good for asking follow up questions. Requests are sent via axios with Authorizations held in a separate .env file.</p>
 <br />
 <h2>Image Generator</h2>
 <img style='height: 500px;' alt='gpt-example' src='https://github.com/j-abellera/openai-project/blob/master/OpenAI-Project_DALLE-Example.png' />
