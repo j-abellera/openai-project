@@ -3,7 +3,7 @@
 <p>The rise of AI is exciting and useful. In fact, so much so, that many people want to use it for their own entertainment and education, including myself. There's a downside to that though. Servers are usually overloaded which means I can't create AI images and talk to an AI chatbot during busy times which seems to be always.</p>
 <p>I created this simple project to utilize the GPT and DALL-E APIs so I can utilize AI freely and without having to login to my account all the time. Very convenient to use on the fly.</p>
 <br />
-<p>Application is built using React.js and Axios</p>
+<p>Application is built using React.js and Axios. Requires API key provided by OpenAi before use.</p>
 <h2>Chat Generator</h2>
 <img style='height: 500px;' alt='gpt-example' src='https://github.com/j-abellera/openai-project/blob/master/OpenAI-Project_GPT-Example.png' />
 <p>Chat bot has been updated to use the GPT-3.5-Turbo model.</p>
