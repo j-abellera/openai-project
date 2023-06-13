@@ -7,7 +7,7 @@ const ImageGenerator = (props) => {
         <div className='App'>
           <ImageForm input={input} setInput={setInput} setRequest={setRequest} setImgResponse={setImgResponse} />
           <p className='asked'>{request ? `You requested: ${request}` : null}</p>
-          {imgResponse ? <img className='ai-Image' alt='ai-generated' src={imgResponse} /> : null}
+          {imgResponse ? imgResponse.map((img, idx) => <img key={idx} className='ai-Image' alt='ai-generated' src={img.url} />) : null}
         </div>
       );
 }

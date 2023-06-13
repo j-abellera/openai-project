@@ -32,8 +32,8 @@ const ImageForm = (props) => {
                     size: '1024x1024'
                 }
             });
-            console.log(response.data.data[0].url)
-            return response.data.data[0].url//returns image
+            console.log(response.data.data)
+            return response.data.data//returns image
         } catch (error) {
             console.error(error);
         }
