@@ -28,7 +28,7 @@ const ImageForm = (props) => {
                 },
                 data: {
                     prompt: input,
-                    n: 1,
+                    n: 5,
                     size: '1024x1024'
                 }
             });

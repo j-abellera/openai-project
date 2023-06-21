@@ -26,3 +26,27 @@ export const aiRequest = async (input) => {
         console.error(error);
     }
 }
+
+export const vercelDBAllLogs = async () => {
+    const { data } = await axios.get('https://openai-db.vercel.app/api/chatLog')
+    const logs = data.data.map(log => {
+        const { role, content } = log;
+        return { role, content };
+    });
+    return logs;
+}
+
+export const addChatToLog = async (chat) => {
+    const createdLogs = await axios.post('https://openai-db.vercel.app/api/chatLog', chat);
+    return createdLogs.data.data;
+}
+
+const initData = {role: "system", content: "You are a helpful assistant"};
+export const resetChatLog = async () => {
+    const { data } = await axios.post('https://openai-db.vercel.app/api/chatLog', initData);
+    const createdLogs = data.data.map(log => {
+        const { role, content } = log;
+        return { role, content };
+    })
+    return createdLogs;
+}

@@ -3,7 +3,9 @@ import './App.css';
 import ChatGenerator from './Generators/ChatGenerator';
 import ImageGenerator from './Generators/ImageGenerator';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+import { vercelDBAllLogs, resetChatLog } from './api/index';
 
 function App() {
   //UNIVERSAL STATES
@@ -11,12 +13,23 @@ function App() {
   //CHAT GENERATOR STATES
   const [response, setResponse] = useState('')
   const [asked, setAsked] = useState('')
-  const [chatLog, setChatLog] = useState([
-    {"role": "system", content: "You are a helpful assistant"} //sets behavior of the bot
-  ]);
+  const [chatLog, setChatLog] = useState([]); //initialState set by axios call
   //IMAGE GENERATOR STATES
   const [imgResponse, setImgResponse] = useState('')
   const [request, setRequest] = useState('')
+
+  useEffect(() => {
+    const setLogState = async () => {
+      const logs = await vercelDBAllLogs();
+      if(!logs || logs.length === 0) {
+        const newLogs = await resetChatLog();
+        setChatLog(newLogs);
+      } else {
+        setChatLog(logs);
+      }
+    }
+    setLogState();
+  }, [])
 
   return (
     <>

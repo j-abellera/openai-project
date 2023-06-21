@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { resetChatLog, vercelDBAllLogs, addChatToLog } from './api/index';
 
 const Form = (props) => {
     const { input, setInput, setResponse, setAsked, chatLog, setChatLog } = props;
@@ -9,6 +10,7 @@ const Form = (props) => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        await addChatToLog({"role": "user", "content": input});
         const updatedChatLog = [...chatLog, {"role": "user", "content": input}];
         setChatLog(updatedChatLog);
         const response = await aiRequest(updatedChatLog);
@@ -34,6 +36,7 @@ const Form = (props) => {
                     max_tokens: 1000
                 }
             });
+            await addChatToLog({"role": "assistant", "content": response.data.choices[0].message.content});
             setChatLog( prevChatLog => [...prevChatLog, {"role": "assistant", "content": response.data.choices[0].message.content}]);
             return response.data.choices[0].message.content;
         } catch (error) {
