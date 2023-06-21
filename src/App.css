@@ -40,6 +40,46 @@
   color: #d8c564;
 }
 
+/* copy paste for regular windows size. FIX LATER */
+.App {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+  height: auto;
+  /* border: solid 2px red; */
+  justify-content: center;
+  margin: 0;
+  /* background-color: #495e57; */
+}
+.response {
+  width: 95%;
+  margin: 0;
+  height: auto;
+  border-radius: 10px;
+}
+form {
+  width: 95%;
+  margin: 0;
+}
+.asked {
+  margin: 0;
+}
+.submit {
+  width: 100px;
+  height: 30px;
+  margin: 20px 0;
+  color: #495e57;
+  font-weight: bold;
+  background-color: #f4ce14;
+  border: solid 2px black;
+  border-radius: 10px;
+}
+textarea {
+  width: 95%;
+  text-align: center;
+  justify-self: center;
+}
+
 @media screen and (max-width: 400px) {
   .App {
     display: flex;
