@@ -42,11 +42,16 @@ export const addChatToLog = async (chat) => {
 }
 
 const initData = {role: "system", content: "You are a helpful assistant"};
-export const resetChatLog = async () => {
+export const initChatLog = async () => {
     const { data } = await axios.post('https://openai-db.vercel.app/api/chatLog', initData);
     const createdLogs = data.data.map(log => {
         const { role, content } = log;
         return { role, content };
     })
     return createdLogs;
+}
+
+export const resetChatLog = async () => {
+    const { data } = await axios.delete('https://openai-db.vercel.app/api/chatLog/delete/all');
+    return data.message;
 }
