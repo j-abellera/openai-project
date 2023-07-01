@@ -13,6 +13,7 @@
 <img style='height: 500px;' alt='gpt-example' src='https://github.com/j-abellera/openai-project/blob/master/OpenAI-Project_DALLE-Example.png' />
 <p>Image generator that uses the DALLE 2 model</p>
 <p>Requests and Image Responses from the API endpoint are saved via state and also saved in a remote postgres database managed by built API deployed with vercel. Images are rendered in 1024x1024. Requests are made via Axios with authorizations held in a .env file.</p>
+<p>DB git can be viewed <a href="https://github.com/j-abellera/openai_db">here</a></p>
 <p>To get started:</p>
 <ul>
   <li>npm install</li>
