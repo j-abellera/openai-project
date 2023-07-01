@@ -17,5 +17,6 @@
 <ul>
   <li>npm install</li>
   <li>create an .env file</li>
-  <li></li>
+  <li>Add a 'REACT_APP_OPENAI_API_KEY' in the .env file equal to an API key provided by OpenAI</li>
+  <li>npm start</li>
 </ul>
