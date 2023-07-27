@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { resetChatLog, vercelDBAllLogs, addChatToLog } from './api/index';
+import godPrompt from './data/godMode';
 
 const Form = (props) => {
-    const { input, setInput, setResponse, setAsked, chatLog, setChatLog, temperature } = props;
+    const { input, setInput, setResponse, setAsked, chatLog, setChatLog, temperature, godMode, setGodMode, onReset } = props;
     const handleChange = (e) => {
         const typed = e.target.value;
         setInput(typed);
@@ -19,6 +20,16 @@ const Form = (props) => {
         setInput('');
     }
 
+    const setMode = e => {
+        if(godMode === false) {
+            setGodMode(!godMode);
+            setInput(godPrompt);
+        } else {
+            setGodMode(!godMode);
+            onReset();
+        }
+    }
+
     const aiRequest = async (chatLog) => {
         try {
             console.log(chatLog)
@@ -30,7 +41,7 @@ const Form = (props) => {
                     'Content-Type': 'application/json'
                 },
                 data: {
-                    model: 'gpt-4-32k',
+                    model: 'gpt-4',
                     messages: chatLog,
                     temperature: temperature,
                     max_tokens: 1000
@@ -48,7 +59,9 @@ const Form = (props) => {
         <>
             {/* <h1>OpenAI Project</h1> */}
             <h1>Ask Anything Using GPT 4</h1>
-            <form onSubmit={handleSubmit}>
+            {/* <label htmlFor='godmode'>God Mode (erases chatLog on when disabled)</label>
+            <input name='godmode' type='checkbox' checked={godMode} onChange={setMode}/> */}
+            <form id='chatForm' onSubmit={handleSubmit}>
                 {/* <label htmlFor='input'>Ask Anything Here</label><br/> */}
                 <textarea
                     rows='10'

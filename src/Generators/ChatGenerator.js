@@ -1,7 +1,22 @@
 import Form from '../Form';
 
 const ChatGenerator = (props) => {
-    const { input, setInput, setResponse, setAsked, chatLog, setChatLog, asked, response, initChatLog, resetChatLog, temperature, setTemperature } = props;
+    const {
+      input,
+      setInput,
+      setResponse,
+      setAsked,
+      chatLog,
+      setChatLog,
+      asked,
+      response,
+      initChatLog,
+      resetChatLog,
+      temperature,
+      setTemperature,
+      godMode,
+      setGodMode
+    } = props;
 
     const onReset = async () => {
       setAsked('');
@@ -24,7 +39,7 @@ const ChatGenerator = (props) => {
             <input name='temp-range' type='range' min={0} max={2} step={0.1} value={temperature} onChange={setNewTemp} />
             {temperature <= .7 ? `${temperature} - Focused` : temperature <= 1.4 ? `${temperature} - Balanced` : `${temperature} - Random`}
           </div>
-          <Form input={input} setInput={setInput} setResponse={setResponse} setAsked={setAsked} chatLog={chatLog} setChatLog={setChatLog} temperature={temperature} />
+          <Form input={input} setInput={setInput} setResponse={setResponse} setAsked={setAsked} chatLog={chatLog} setChatLog={setChatLog} temperature={temperature} godMode={godMode} setGodMode={setGodMode} onReset={onReset} />
           <p className='asked'>{asked ? `You asked: ${asked}` : null}</p>
           <h4 className='response'>{response ? response : null}</h4>
           {

@@ -16,6 +16,7 @@ function App() {
   const [asked, setAsked] = useState('')
   const [chatLog, setChatLog] = useState([]); //initialState set by axios call
   const [temperature, setTemperature] = useState(0)
+  const [godMode, setGodMode] = useState(false)
   //IMAGE GENERATOR STATES
   const [imgResponse, setImgResponse] = useState('')
   const [request, setRequest] = useState('')
@@ -56,6 +57,8 @@ function App() {
               resetChatLog={resetChatLog}
               temperature={temperature}
               setTemperature={setTemperature}
+              godMode={godMode}
+              setGodMode={setGodMode}
             />}
           />
           <Route path='/image' element={
