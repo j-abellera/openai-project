@@ -30,7 +30,7 @@ const Form = (props) => {
                     'Content-Type': 'application/json'
                 },
                 data: {
-                    model: 'gpt-3.5-turbo',
+                    model: 'gpt-4',
                     messages: chatLog,
                     temperature: 0,
                     max_tokens: 1000
@@ -47,7 +47,7 @@ const Form = (props) => {
     return (
         <>
             {/* <h1>OpenAI Project</h1> */}
-            <h1>Ask Anything Using GPT3.5</h1>
+            <h1>Ask Anything Using GPT 4</h1>
             <form onSubmit={handleSubmit}>
                 {/* <label htmlFor='input'>Ask Anything Here</label><br/> */}
                 <textarea
