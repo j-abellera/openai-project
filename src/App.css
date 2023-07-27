@@ -80,6 +80,11 @@ textarea {
   justify-self: center;
 }
 
+.temp-container {
+  display: flex;
+  flex-flow: column wrap;
+}
+
 @media screen and (max-width: 400px) {
   .App {
     display: flex;

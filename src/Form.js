@@ -3,7 +3,7 @@ import axios from 'axios';
 import { resetChatLog, vercelDBAllLogs, addChatToLog } from './api/index';
 
 const Form = (props) => {
-    const { input, setInput, setResponse, setAsked, chatLog, setChatLog } = props;
+    const { input, setInput, setResponse, setAsked, chatLog, setChatLog, temperature } = props;
     const handleChange = (e) => {
         const typed = e.target.value;
         setInput(typed);
@@ -32,7 +32,7 @@ const Form = (props) => {
                 data: {
                     model: 'gpt-4-32k',
                     messages: chatLog,
-                    temperature: 0,
+                    temperature: temperature,
                     max_tokens: 1000
                 }
             });
