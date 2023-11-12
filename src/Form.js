@@ -41,7 +41,7 @@ const Form = (props) => {
                     'Content-Type': 'application/json'
                 },
                 data: {
-                    model: 'gpt-4',
+                    model: 'gpt-4-1106-preview',
                     messages: chatLog,
                     temperature: temperature,
                     max_tokens: 1000
