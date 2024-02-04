@@ -41,7 +41,7 @@ export const addChatToLog = async (chat) => {
     return createdLogs.data.data;
 }
 
-const initData = {role: "system", content: "You are a helpful assistant, your answers should not be too long unless it is necessary to provide more information for the question."};
+const initData = {role: "system", content: "You are a helpful assistant, your answers should not be too long."};
 export const initChatLog = async () => {
     const { data } = await axios.post('https://openai-db.vercel.app/api/chatLog', initData);
     const createdLogs = data.data.map(log => {
